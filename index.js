@@ -88,34 +88,25 @@ function checkGameOver() {
 
         }
 
-
-        if (containsAll == false && cellsClicked.length < 9) {
-            continue;
-        }
-
         if (containsAll) {
             for (pos of combination) {
                 cells[pos].style.backgroundColor = 'yellow';
             }
+            if (turn == 'X') {
+                gameStatus.innerHTML = 'Player X wins!';
+            } else {
+                gameStatus.innerHTML = 'Player O wins!';
+            }
+            resetBtn.style.visibility = 'visible';
+            running = false;
         }
-
-        if (turn == 'X') {
-            gameStatus.innerHTML = 'Player X wins!';
-        } else {
-            gameStatus.innerHTML = 'Player O wins!';
-        }
-
-        if (cellsClicked.length == 9 && !containsAll) {
-            gameStatus.innerHTML = 'Game is a tie!';
-        }
-
-        resetBtn.style.visibility = 'visible';
-        running = false;
-        return true;
-        
     }
 
-    return false;
+    if (cellsClicked.length == 9) {
+        gameStatus.innerHTML = 'Game is a tie!';
+        resetBtn.style.visibility = 'visible';
+        running = false;
+    }
 }
 
 
