@@ -99,6 +99,7 @@ function checkGameOver() {
             }
             resetBtn.style.visibility = 'visible';
             running = false;
+            return;
         }
     }
 
